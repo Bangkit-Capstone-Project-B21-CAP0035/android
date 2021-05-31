@@ -15,4 +15,8 @@ class LoginResponse {
     @SerializedName("data")
     @Expose
     var data: Data? = null
+
+    @SerializedName("errors")
+    @Expose
+    var errors: Errors? = null
 }
