@@ -36,8 +36,12 @@ class LoginActivity : AppCompatActivity() {
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
+        Log.d("TAG", "ini button = " + login)
+        Log.d("TAG", "ini loading = " + loading)
+
         password.apply {
             login.setOnClickListener {
+                Log.d("TAG", "Ini terclick")
                 loading.visibility = View.VISIBLE
                 login(username.text.toString(), password.text.toString())
             }
