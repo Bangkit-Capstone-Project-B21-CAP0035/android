@@ -56,6 +56,7 @@ class JournalAdapter(
 
         fun openDetail (journal: Journal) {
             Log.d("TAG", "INI terckilcka = " + journal.story)
+            intent.putExtra("EXTRA_JOURNAL", journal);
             startActivity(itemView.context, intent, null)
         }
     }

@@ -12,4 +12,8 @@ interface RetrofitService {
 
     @GET("journal")
     fun getJournal(@Header ("Authorization") auth: String): Call<JournalResponse>
+
+    @POST("journal/delete/{id}")
+    fun deleteJournal(@Header ("Authorization") auth: String,
+                      @Path ("id") id: Int): Call<JournalResponse>
 }

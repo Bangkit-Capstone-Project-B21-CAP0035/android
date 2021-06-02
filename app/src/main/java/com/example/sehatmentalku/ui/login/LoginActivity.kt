@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                 .enqueue(object : Callback<LoginResponse> {
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         // Error logging in
-                        Log.d("TAG", "Masuk eerror kah ?")
+                        Log.d("TAG", "onFailure LoginActivity" + t)
                     }
 
                     override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
