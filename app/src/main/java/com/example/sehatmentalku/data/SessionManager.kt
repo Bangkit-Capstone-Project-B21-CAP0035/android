@@ -24,6 +24,6 @@ class SessionManager (context: Context) {
      * Function to fetch auth token
      */
     fun fetchAuthToken(): String? {
-        return prefs.getString(USER_TOKEN, null)
+        return "Bearer " + prefs.getString(USER_TOKEN, null)
     }
 }
