@@ -1,10 +1,12 @@
 package com.example.sehatmentalku.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +16,7 @@ import com.example.sehatmentalku.data.RetrofitClient
 import com.example.sehatmentalku.data.SessionManager
 import com.example.sehatmentalku.data.model.Journal
 import com.example.sehatmentalku.data.model.JournalResponse
+import com.example.sehatmentalku.ui.journal.AddJournalActivity
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +37,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val btnAdd = view.findViewById<Button>(R.id.btn_add)
+        btnAdd.setOnClickListener{
+            startActivity(Intent(view.context, AddJournalActivity::class.java).apply {})
+        }
 
         // Get data journal
         getJournal(view)
@@ -89,5 +97,9 @@ class HomeFragment : Fragment() {
         } catch (e: Throwable) {
             Log.d("TAG", "get Journal error = " + e)
         }
+    }
+
+    fun addJournal() {
+
     }
 }

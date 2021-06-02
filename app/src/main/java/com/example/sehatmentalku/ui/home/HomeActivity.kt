@@ -19,6 +19,7 @@ import com.example.sehatmentalku.data.model.JournalItem
 import com.example.sehatmentalku.data.model.JournalResponse
 import com.example.sehatmentalku.data.model.LoginRequest
 import com.example.sehatmentalku.data.model.LoginResponse
+import com.example.sehatmentalku.ui.journal.AddJournalActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 import retrofit2.Call
