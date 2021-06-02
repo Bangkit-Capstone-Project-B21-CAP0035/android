@@ -21,4 +21,9 @@ interface RetrofitService {
     @POST("journal")
     fun saveJournal(@Header ("Authorization") auth: String,
                     @Body request: JournalRequest): Call<JournalResponse>
+
+    @POST("journal/update/{id}")
+    fun updateJournal(@Header ("Authorization") auth: String,
+                    @Body request: JournalRequest,
+                    @Path ("id") id: Int): Call<JournalResponse>
 }

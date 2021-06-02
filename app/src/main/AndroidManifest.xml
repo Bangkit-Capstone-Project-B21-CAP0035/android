@@ -3,7 +3,7 @@
     package="com.example.sehatmentalku">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SehatMentalku">
-        <activity android:name=".ui.journal.AddJournalActivity"></activity>
+        <activity android:name=".ui.journal.EditJournalActivity"></activity>
+        <activity android:name=".ui.journal.AddJournalActivity" />
         <activity
             android:name=".ui.journal.JournalActivity"
             android:label="@string/title_activity_journal"

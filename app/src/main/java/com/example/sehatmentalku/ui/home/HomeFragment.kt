@@ -98,8 +98,4 @@ class HomeFragment : Fragment() {
             Log.d("TAG", "get Journal error = " + e)
         }
     }
-
-    fun addJournal() {
-
-    }
 }

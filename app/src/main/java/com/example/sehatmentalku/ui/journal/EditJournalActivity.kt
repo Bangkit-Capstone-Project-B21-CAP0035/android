@@ -5,15 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.sehatmentalku.R
 import com.example.sehatmentalku.data.RetrofitClient
 import com.example.sehatmentalku.data.SessionManager
 import com.example.sehatmentalku.data.model.Journal
+import com.example.sehatmentalku.data.model.JournalRequest
 import com.example.sehatmentalku.data.model.JournalResponse
 import com.example.sehatmentalku.ui.home.HomeActivity
 import org.json.JSONObject
@@ -21,53 +22,42 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class JournalActivity : AppCompatActivity() {
+class EditJournalActivity : AppCompatActivity() {
+
     private lateinit var sessionManager: SessionManager
     private lateinit var retrofitClient: RetrofitClient
     private lateinit var journal: Journal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_journal)
+        setContentView(R.layout.activity_edit_journal)
 
         journal = intent.getSerializableExtra("EXTRA_JOURNAL") as Journal
-
-        Glide.with(findViewById<ImageView>(R.id.journal_image).context)
-            .load("https://i.stack.imgur.com/eJbuH.png?s=128").into(findViewById<ImageView>(R.id.journal_image))
-        findViewById<TextView>(R.id.journal_story).text = journal!!.story
+        Glide.with(findViewById<ImageView>(R.id.journal_img).context)
+            .load("https://i.stack.imgur.com/eJbuH.png?s=128").into(findViewById(R.id.journal_img))
+        findViewById<EditText>(R.id.input_story).setText(journal.story)
     }
 
-    fun editJournal(view: View) {
-        val intent = Intent(view.context, EditJournalActivity::class.java).apply {}
-        intent.putExtra("EXTRA_JOURNAL", journal)
-        startActivity(intent)
-    }
-
-    fun deleteJournal(view: View) {
+    fun updateJournal(view: View) {
         try {
             retrofitClient = RetrofitClient()
-            sessionManager = SessionManager(view.context)
+            sessionManager = SessionManager(this)
 
-            retrofitClient.getRetrofitService().deleteJournal(sessionManager.fetchAuthToken()!!, journal?.id!!)
+            val intent = Intent(this, HomeActivity::class.java).apply {}
+            val story = findViewById<EditText>(R.id.input_story).text
+
+            retrofitClient.getRetrofitService().updateJournal(sessionManager.fetchAuthToken()!!, JournalRequest(story.toString()), journal.id!!)
                 .enqueue(object : Callback<JournalResponse> {
                     override fun onFailure(call: Call<JournalResponse>, t: Throwable) {
                         // Error logging in
-                        Log.d("TAG", "onFailure Delete Journal = " + t)
+                        Log.d("TAG", "onFailure updateJournal" + t)
                     }
 
                     override fun onResponse(call: Call<JournalResponse>, response: Response<JournalResponse>) {
                         val journalResponse = response.body()
 
                         if (response.code() == 200 && journalResponse?.message != null) {
-                            // Toast sukses
-                            Toast.makeText(
-                                view.context,
-                                journalResponse.message,
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                            // Intent balik ke home
-                            startActivity(Intent(view.context, HomeActivity::class.java).apply {})
+                            startActivity(intent)
                         } else {
                             try {
                                 val jObjError = JSONObject(response.errorBody()!!.string())
@@ -75,25 +65,25 @@ class JournalActivity : AppCompatActivity() {
                                 if (jObjError.has("errors")) {
                                     val errorName = jObjError.getJSONObject("errors").names()[0].toString()
                                     Toast.makeText(
-                                        view.context,
+                                        applicationContext,
                                         jObjError.getJSONObject("errors").getJSONArray(errorName).getString(0),
                                         Toast.LENGTH_LONG
                                     ).show()
                                 } else {
                                     Toast.makeText(
-                                        view.context,
+                                        applicationContext,
                                         jObjError.getString("message"),
                                         Toast.LENGTH_LONG
                                     ).show()
                                 }
                             } catch (e: Exception) {
-                                Toast.makeText(view.context, e.message, Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext, e.message, Toast.LENGTH_LONG).show()
                             }
                         }
                     }
                 })
         } catch (e: Throwable) {
-            Log.d("TAG", "delete Journal error = " + e)
+            Log.d("TAG", "Update Journal error = " + e)
         }
     }
 }
