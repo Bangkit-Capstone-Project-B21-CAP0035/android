@@ -1,53 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_welcome"
     tools:context=".ui.journal.JournalActivity">
 
-    <ImageView
+    <TextView
+        android:id="@+id/text_home"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/mont_bold"
+        android:text="Edit your Journal"
+        android:textAlignment="center"
+        android:textColor="#133c55"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_edits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/mont_reg"
+        android:text="Something's not right?"
+        android:textAlignment="center"
+        android:textColor="#133c55"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/text_home"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_home"
+        app:layout_constraintTop_toBottomOf="@+id/text_home" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/journal_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/person"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="138dp" />
+        android:layout_marginTop="32dp"
+        android:background="@drawable/person"
+        app:layout_constraintEnd_toEndOf="@+id/text_edits"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/text_edits"
+        app:layout_constraintTop_toBottomOf="@+id/text_edits"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/journal_story"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/journal_image"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_btn"
+        android:padding="16dp"
         android:text="Loading ..."
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="288dp" />
+        app:layout_constraintEnd_toEndOf="@+id/journal_image"
+        app:layout_constraintStart_toStartOf="@+id/journal_image"
+        app:layout_constraintTop_toBottomOf="@+id/journal_image" />
 
-    <LinearLayout
-        android:id="@+id/btns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+    <Button
+        android:id="@+id/btn_delete"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:padding="4dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:backgroundTint="#133c55"
+        android:onClick="deleteJournal"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="@+id/journal_story"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_edit"
+        app:layout_constraintTop_toBottomOf="@+id/journal_story"
+        tools:ignore="MissingConstraints" />
 
-        <Button
-            android:id="@+id/btn_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Edit"
-            android:onClick="editJournal"/>
+    <Button
+        android:id="@+id/btn_edit"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/white"
+        android:onClick="editJournal"
+        android:text="Edit"
+        android:textColor="#133c55"
+        app:layout_constraintStart_toStartOf="@+id/journal_story"
+        app:layout_constraintTop_toBottomOf="@+id/journal_story" />
 
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Hapus"
-            android:onClick="deleteJournal"/>
-    </LinearLayout>
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

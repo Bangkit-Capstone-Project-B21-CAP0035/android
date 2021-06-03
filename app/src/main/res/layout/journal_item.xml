@@ -1,38 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
+    app:cardMaxElevation="6dp"
+    app:cardUseCompatPadding="true">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/items_tv_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:padding="8dp">
+        android:layout_height="150dp"
+        android:background="@drawable/cardview_bg">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/journal_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/person"/>
+            android:layout_marginStart="16dp"
+            android:src="@drawable/person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.32" />
 
         <TextView
             android:id="@+id/journal_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_toEndOf="@id/journal_img"
+            android:fontFamily="@font/mont_reg"
             android:paddingLeft="5dp"
+            android:textColor="#133c55"
+            android:text="Monday, January 1st 2021"
+            android:textSize="15sp"
             android:textStyle="bold"
-            android:text="Senin, 1 Jan 2021"/>
+            app:layout_constraintStart_toEndOf="@+id/journal_img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/journal_story"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/journal_img"
             android:layout_below="@id/journal_tanggal"
+            android:layout_marginBottom="64dp"
+            android:layout_toEndOf="@id/journal_img"
+            android:fontFamily="@font/mont_reg"
             android:paddingLeft="5dp"
-            android:paddingTop="8dp"
-            android:text="Isi jurnal singkat"/>
-    </RelativeLayout>
+            android:paddingTop="10dp"
+            android:textColor="#133c55"
+            android:text="Brief Journal Description..."
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/journal_tanggal"
+            tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="48dp"
+            android:layout_height="41dp"
+            android:drawableStart="@drawable/nav_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.931"
+            app:layout_constraintStart_toEndOf="@+id/journal_story"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="93dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -86,4 +86,9 @@ class EditJournalActivity : AppCompatActivity() {
             Log.d("TAG", "Update Journal error = " + e)
         }
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

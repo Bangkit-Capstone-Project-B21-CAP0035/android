@@ -76,4 +76,9 @@ class AddJournalActivity : AppCompatActivity() {
             Log.d("TAG", "Save Journal error = " + e)
         }
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

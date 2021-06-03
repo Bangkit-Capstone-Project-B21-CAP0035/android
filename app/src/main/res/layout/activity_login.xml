@@ -57,7 +57,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="#133c55"
-        android:text="@string/action_sign_in_short"
+        android:text="Login"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,16 +90,17 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/mont_reg"
+        android:fontFamily="@font/mont_bold"
         android:text="Log In"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"

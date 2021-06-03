@@ -3,6 +3,7 @@ package com.example.sehatmentalku.ui.journal
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telecom.Call
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -95,5 +96,10 @@ class JournalActivity : AppCompatActivity() {
         } catch (e: Throwable) {
             Log.d("TAG", "delete Journal error = " + e)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
