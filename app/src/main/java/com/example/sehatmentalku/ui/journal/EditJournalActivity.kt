@@ -31,6 +31,7 @@ class EditJournalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_journal)
+        supportActionBar?.hide()
 
         journal = intent.getSerializableExtra("EXTRA_JOURNAL") as Journal
         Glide.with(findViewById<ImageView>(R.id.journal_img).context)

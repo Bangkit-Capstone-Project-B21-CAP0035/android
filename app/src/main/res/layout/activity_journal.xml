@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="128dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/mont_bold"
         android:text="Edit your Journal"
@@ -47,7 +47,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/person"
         app:layout_constraintEnd_toEndOf="@+id/text_edits"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="@+id/text_edits"
         app:layout_constraintTop_toBottomOf="@+id/text_edits"
         tools:srcCompat="@tools:sample/avatars" />
@@ -59,8 +59,9 @@
         android:layout_below="@id/journal_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:background="@drawable/bg_btn"
+        android:background="@drawable/bg_filled"
         android:padding="16dp"
+        android:textColor="@color/white"
         android:text="Loading ..."
         app:layout_constraintEnd_toEndOf="@+id/journal_image"
         app:layout_constraintStart_toStartOf="@+id/journal_image"
@@ -88,7 +89,7 @@
 
     <Button
         android:id="@+id/btn_edit"
-        style="@style/Widget.AppCompat.Button"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"

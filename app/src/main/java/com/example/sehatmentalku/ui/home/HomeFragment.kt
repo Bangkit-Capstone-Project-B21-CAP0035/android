@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +27,8 @@ class HomeFragment : Fragment() {
     private lateinit var sessionManager: SessionManager
     private lateinit var retrofitClient: RetrofitClient
 
+
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -33,18 +36,23 @@ class HomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         return root
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val loading = view.findViewById<ProgressBar>(R.id.loading)
         val btnAdd = view.findViewById<Button>(R.id.btn_add)
         btnAdd.setOnClickListener{
             startActivity(Intent(view.context, AddJournalActivity::class.java).apply {})
         }
-
+        loading.visibility = View.VISIBLE
         // Get data journal
         getJournal(view)
+        loading.visibility = View.GONE
     }
 
     private fun getJournal(view: View) {
