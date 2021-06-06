@@ -8,7 +8,7 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <TextView
-        android:id="@+id/text_notificationz"
+        android:id="@+id/text_dashboards"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -37,10 +37,10 @@
         android:textAlignment="center"
         android:textColor="#133c55"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/text_notificationz"
+        app:layout_constraintEnd_toEndOf="@+id/text_dashboards"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text_notificationz"
-        app:layout_constraintTop_toBottomOf="@+id/text_notificationz" />
+        app:layout_constraintStart_toStartOf="@+id/text_dashboards"
+        app:layout_constraintTop_toBottomOf="@+id/text_dashboards" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
