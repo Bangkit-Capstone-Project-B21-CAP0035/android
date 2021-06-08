@@ -38,7 +38,7 @@ android {
 
 repositories {
     google()
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -60,10 +60,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Network
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-//    implementation 'com.squareup.okhttp3:okhttp:4.2.1'
+
+    // Old version
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+
+    // New version
+//    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+//    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+//    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
     implementation 'org.conscrypt:conscrypt-android:2.2.1'
 
     // RecyclerView

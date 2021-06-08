@@ -35,7 +35,7 @@ class EditJournalActivity : AppCompatActivity() {
 
         journal = intent.getSerializableExtra("EXTRA_JOURNAL") as Journal
         Glide.with(findViewById<ImageView>(R.id.journal_img).context)
-            .load("https://i.stack.imgur.com/eJbuH.png?s=128").into(findViewById(R.id.journal_img))
+            .load(journal.imageUrl).into(findViewById(R.id.journal_img))
         findViewById<EditText>(R.id.input_story).setText(journal.story)
     }
 

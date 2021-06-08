@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.sehatmentalku.R
 import com.example.sehatmentalku.data.RetrofitClient
@@ -33,8 +32,8 @@ class JournalActivity : AppCompatActivity() {
         journal = intent.getSerializableExtra("EXTRA_JOURNAL") as Journal
 
         Glide.with(findViewById<ImageView>(R.id.journal_image).context)
-            .load("https://i.stack.imgur.com/eJbuH.png?s=128").into(findViewById<ImageView>(R.id.journal_image))
-        findViewById<TextView>(R.id.journal_story).text = journal!!.story
+            .load(journal.imageUrl).into(findViewById(R.id.journal_image))
+        findViewById<TextView>(R.id.journal_story).text = journal.story
     }
 
     fun editJournal(view: View) {
@@ -48,7 +47,7 @@ class JournalActivity : AppCompatActivity() {
             retrofitClient = RetrofitClient()
             sessionManager = SessionManager(view.context)
 
-            retrofitClient.getRetrofitService().deleteJournal(sessionManager.fetchAuthToken()!!, journal?.id!!)
+            retrofitClient.getRetrofitService().deleteJournal(sessionManager.fetchAuthToken()!!, journal.id!!)
                 .enqueue(object : Callback<JournalResponse> {
                     override fun onFailure(call: Call<JournalResponse>, t: Throwable) {
                         // Error logging in

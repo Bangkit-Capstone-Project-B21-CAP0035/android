@@ -17,9 +17,21 @@ class Journal: Serializable {
     @Expose
     var story: String? = null
 
+    @SerializedName("prediction")
+    @Expose
+    var prediction: Int? = null
+
     @SerializedName("image")
     @Expose
     var image: String? = null
+
+    @SerializedName("image_url")
+    @Expose
+    var imageUrl: String? = null
+
+    @SerializedName("tanggal")
+    @Expose
+    var tanggal: String? = null
 
     @SerializedName("created_at")
     @Expose
