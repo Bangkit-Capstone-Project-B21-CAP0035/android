@@ -24,10 +24,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeFragment : Fragment() {
+
     private lateinit var sessionManager: SessionManager
     private lateinit var retrofitClient: RetrofitClient
-
-
+    private lateinit var loading: ProgressBar
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -36,15 +36,12 @@ class HomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         return root
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val loading = view.findViewById<ProgressBar>(R.id.loading)
+        loading = view.findViewById(R.id.loading)
         val btnAdd = view.findViewById<Button>(R.id.btn_add)
         btnAdd.setOnClickListener{
             startActivity(Intent(view.context, AddJournalActivity::class.java).apply {})
@@ -52,7 +49,6 @@ class HomeFragment : Fragment() {
         loading.visibility = View.VISIBLE
         // Get data journal
         getJournal(view)
-        loading.visibility = View.GONE
     }
 
     private fun getJournal(view: View) {
@@ -68,6 +64,7 @@ class HomeFragment : Fragment() {
                     }
 
                     override fun onResponse(call: Call<JournalResponse>, response: Response<JournalResponse>) {
+                        loading.visibility = View.INVISIBLE
                         val journalResponse = response.body()
                         Log.d("TAG", "Ini response Plain = " + journalResponse.toString())
 

@@ -8,9 +8,11 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface RetrofitService {
+    // Auth
     @POST("login")
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
+    // Journal
     @GET("journal")
     fun getJournal(@Header ("Authorization") auth: String): Call<JournalResponse>
 
@@ -26,4 +28,8 @@ interface RetrofitService {
     fun updateJournal(@Header ("Authorization") auth: String,
                     @Body request: JournalRequest,
                     @Path ("id") id: Int): Call<JournalResponse>
+
+    // Psychologist
+    @GET("psychologist")
+    fun getPsychologist(@Header ("Authorization") auth: String): Call<JournalResponse>
 }

@@ -21,4 +21,9 @@ class Data {
     @SerializedName("journals")
     @Expose
     var journals: MutableList<Journal?>? = null
+
+    // Bagian getPsychologist
+    @SerializedName("psychologists")
+    @Expose
+    var psychologists: MutableList<Psychologist?>? = null
 }
